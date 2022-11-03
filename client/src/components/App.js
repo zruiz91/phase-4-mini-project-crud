@@ -30,20 +30,23 @@ function App() {
     );
   }
 
+  function mapFunction(spices) {
+    spices.map((spice) => (
+      <SpiceItem
+        key={spice.id}
+        spice={spice}
+        onUpdateSpice={handleUpdateSpice}
+        onDeleteSpice={handleDeleteSpice}
+      />
+    ))
+  }
   return (
     <>
       <Header spiceCount={spices.length} />
       <main>
         <NewSpiceForm onAddSpice={handleAddSpice} />
         <section className="spice-list">
-          {spices.map((spice) => (
-            <SpiceItem
-              key={spice.id}
-              spice={spice}
-              onUpdateSpice={handleUpdateSpice}
-              onDeleteSpice={handleDeleteSpice}
-            />
-          ))}
+          {mapFunction}
         </section>
       </main>
     </>
